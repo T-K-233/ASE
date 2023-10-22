@@ -31,11 +31,11 @@ import torch
 from isaacgym import gymapi
 from isaacgym import gymtorch
 
-from env.tasks.humanoid_amp import HumanoidAMP
+from ase.env.tasks.humanoid_amp import HumanoidAMP
 from isaacgym.torch_utils import *
 
-from utils import torch_utils
-from utils import gym_util
+from ase.utils import torch_utils
+from ase.utils import gym_util
 
 
 class HumanoidAMPGetup(HumanoidAMP):

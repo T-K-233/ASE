@@ -31,9 +31,9 @@ import torch
 from isaacgym import gymapi, gymtorch
 from isaacgym.torch_utils import *
 
-import env.tasks.humanoid_amp as humanoid_amp
-import env.tasks.humanoid_amp_task as humanoid_amp_task
-from utils import torch_utils
+import ase.env.tasks.humanoid_amp as humanoid_amp
+import ase.env.tasks.humanoid_amp_task as humanoid_amp_task
+from ase.utils import torch_utils
 
 class HumanoidStrike(humanoid_amp_task.HumanoidAMPTask):
     def __init__(self, cfg, sim_params, physics_engine, device_type, device_id, headless):

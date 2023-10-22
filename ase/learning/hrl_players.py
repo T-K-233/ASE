@@ -38,10 +38,10 @@ from rl_games.algos_torch import torch_ext
 from rl_games.algos_torch.running_mean_std import RunningMeanStd
 from rl_games.common.player import BasePlayer
 
-import learning.common_player as common_player
-import learning.ase_models as ase_models
-import learning.ase_network_builder as ase_network_builder
-import learning.ase_players as ase_players
+import ase.learning.common_player as common_player
+import ase.learning.ase_models as ase_models
+import ase.learning.ase_network_builder as ase_network_builder
+import ase.learning.ase_players as ase_players
 
 class HRLPlayer(common_player.CommonPlayer):
     def __init__(self, config):
@@ -139,6 +139,8 @@ class HRLPlayer(common_player.CommonPlayer):
                 else:
                     action = self.get_action(obs_dict, is_determenistic)
                 obs_dict, r, done, info = self.env_step(self.env, obs_dict, action)
+                # actions: [16 (batch), 64]
+                # obs: [16 (batch), 258]
                 cr += r
                 steps += 1
   

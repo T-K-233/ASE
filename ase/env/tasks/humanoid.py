@@ -34,9 +34,9 @@ from isaacgym import gymtorch
 from isaacgym import gymapi
 from isaacgym.torch_utils import *
 
-from utils import torch_utils
+from ase.utils import torch_utils
 
-from env.tasks.base_task import BaseTask
+from ase.env.tasks.base_task import BaseTask
 
 class Humanoid(BaseTask):
     def __init__(self, cfg, sim_params, physics_engine, device_type, device_id, headless):
@@ -654,6 +654,7 @@ def compute_humanoid_observations_max(body_pos, body_rot, body_vel, body_ang_vel
     local_body_ang_vel = flat_local_body_ang_vel.reshape(body_ang_vel.shape[0], body_ang_vel.shape[1] * body_ang_vel.shape[2])
     
     obs = torch.cat((root_h_obs, local_body_pos, local_body_rot_obs, local_body_vel, local_body_ang_vel), dim=-1)
+    # 1, 16*3, 17*6, 17*3, 17*3
     return obs
 
 

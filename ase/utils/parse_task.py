@@ -26,16 +26,16 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from env.tasks.humanoid import Humanoid
-from env.tasks.humanoid_amp import HumanoidAMP
-from env.tasks.humanoid_amp_getup import HumanoidAMPGetup
-from env.tasks.humanoid_heading import HumanoidHeading
-from env.tasks.humanoid_location import HumanoidLocation
-from env.tasks.humanoid_strike import HumanoidStrike
-from env.tasks.humanoid_reach import HumanoidReach
-from env.tasks.humanoid_perturb import HumanoidPerturb
-from env.tasks.humanoid_view_motion import HumanoidViewMotion
-from env.tasks.vec_task_wrappers import VecTaskPythonWrapper
+from ase.env.tasks.humanoid import Humanoid
+from ase.env.tasks.humanoid_amp import HumanoidAMP
+from ase.env.tasks.humanoid_amp_getup import HumanoidAMPGetup
+from ase.env.tasks.humanoid_heading import HumanoidHeading
+from ase.env.tasks.humanoid_location import HumanoidLocation
+from ase.env.tasks.humanoid_strike import HumanoidStrike
+from ase.env.tasks.humanoid_reach import HumanoidReach
+from ase.env.tasks.humanoid_perturb import HumanoidPerturb
+from ase.env.tasks.humanoid_view_motion import HumanoidViewMotion
+from ase.env.tasks.vec_task_wrappers import VecTaskPythonWrapper
 
 from isaacgym import rlgpu
 

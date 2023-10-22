@@ -31,7 +31,7 @@ import torch
 from rl_games.algos_torch import torch_ext
 from rl_games.algos_torch.running_mean_std import RunningMeanStd
 
-import learning.common_player as common_player
+import ase.learning.common_player as common_player
 
 class AMPPlayerContinuous(common_player.CommonPlayer):
     def __init__(self, config):
@@ -61,7 +61,9 @@ class AMPPlayerContinuous(common_player.CommonPlayer):
     def _post_step(self, info):
         super()._post_step(info)
         if (self.env.task.viewer):
-            self._amp_debug(info)
+            # self._amp_debug(info)
+            # NOTE: bypass
+            pass
         return
 
     def _build_net_config(self):

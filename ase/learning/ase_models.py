@@ -26,7 +26,7 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-from learning import amp_models
+from ase.learning import amp_models
 
 class ModelASEContinuous(amp_models.ModelAMPContinuous):
     def __init__(self, network):

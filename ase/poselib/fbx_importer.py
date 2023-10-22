@@ -30,8 +30,8 @@
 import os
 import json
 
-from poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState, SkeletonMotion
-from poselib.visualization.common import plot_skeleton_state, plot_skeleton_motion_interactive
+from ase.poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState, SkeletonMotion
+from ase.poselib.visualization.common import plot_skeleton_state, plot_skeleton_motion_interactive
 
 # source fbx file path
 fbx_file = "data/01_01_cmu.fbx"

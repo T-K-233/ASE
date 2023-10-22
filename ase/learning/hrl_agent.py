@@ -45,10 +45,10 @@ from rl_games.common import vecenv
 import torch
 from torch import optim
 
-import learning.common_agent as common_agent 
-import learning.ase_agent as ase_agent
-import learning.ase_models as ase_models
-import learning.ase_network_builder as ase_network_builder
+import ase.learning.common_agent as common_agent 
+import ase.learning.ase_agent as ase_agent
+import ase.learning.ase_models as ase_models
+import ase.learning.ase_network_builder as ase_network_builder
 
 from tensorboardX import SummaryWriter
 

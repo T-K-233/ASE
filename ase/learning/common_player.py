@@ -34,6 +34,8 @@ from rl_games.algos_torch.running_mean_std import RunningMeanStd
 from rl_games.common.player import BasePlayer
 
 import numpy as np
+import zarr
+from tqdm import tqdm
 
 class CommonPlayer(players.PpoPlayerContinuous):
     def __init__(self, config):
@@ -71,7 +73,8 @@ class CommonPlayer(players.PpoPlayerContinuous):
             has_masks = self.env.has_action_mask()
 
         need_init_rnn = self.is_rnn
-        for _ in range(n_games):
+        # for _ in range(n_games):
+        for _ in range(1):
             if games_played >= n_games:
                 break
 
@@ -90,15 +93,60 @@ class CommonPlayer(players.PpoPlayerContinuous):
 
             done_indices = []
 
-            for n in range(self.max_steps):
-                obs_dict = self.env_reset(done_indices)
+            
+            recorded_obs = []
+            recorded_acs = []
+            recorded_latent = []
+            episode_ends = []
+            
+            import time
+            zroot = zarr.open_group("recorded_data{}.zarr".format(time.strftime("%H-%M-%S", time.localtime())), "w")
+            
+            zroot.create_group("data")
+            zdata = zroot["data"]
+            
+            zroot.create_group("meta")
+            zmeta = zroot["meta"]
+            
+            zmeta.create_group("episode_ends")
+            
+            zdata.create_group("action")
+            zdata.create_group("state")
+            
+            # unused fields
+            zdata.create_group("img")
+            zdata["img"] = np.zeros((1, ))
+            zdata.create_group("keypoint")
+            zdata["keypoint"] = np.zeros((1, ))
+            zdata.create_group("n_contacts")
+            zdata["n_contacts"] = np.zeros((1, ))
+            zdata.create_group("ase_latent")
+            zdata["ase_latent"] = np.zeros((1, ))
 
+
+            # for n in range(self.max_steps):
+            for n in tqdm(range(1000000)):
+                obs_dict = self.env_reset(done_indices)
+                
                 if has_masks:
                     masks = self.env.get_action_mask()
                     action = self.get_masked_action(obs_dict, masks, is_determenistic)
                 else:
                     action = self.get_action(obs_dict, is_determenistic)
                 obs_dict, r, done, info =  self.env_step(self.env, action)
+
+                # obs [16, 31]
+                # action [16, 253]
+                # n_games = 2000
+                # self.max_steps = 27000
+                
+                recorded_obs.append(obs_dict.to("cpu").detach().numpy()[0, :])
+                recorded_acs.append(action.to("cpu").detach().numpy()[0, :])
+                recorded_latent.append(self._ase_latents.to("cpu").detach().numpy()[0, :])
+                
+                if done[0]:
+                    episode_ends.append(n+1)
+                
                 cr += r
                 steps += 1
   
@@ -141,10 +189,23 @@ class CommonPlayer(players.PpoPlayerContinuous):
                             print('reward:', cur_rewards/done_count, 'steps:', cur_steps/done_count)
 
                     sum_game_res += game_res
-                    if batch_size//self.num_agents == 1 or games_played >= n_games:
-                        break
+                    
+                    # if batch_size//self.num_agents == 1 or games_played >= n_games:
+                    #     break
                 
                 done_indices = done_indices[:, 0]
+            
+            recorded_obs = np.array(recorded_obs)
+            recorded_acs = np.array(recorded_acs)
+            recorded_latent = np.array(recorded_latent)
+            episode_ends = np.array(episode_ends)
+            
+            zdata["state"] = recorded_obs
+            zdata["action"] = recorded_acs
+            zdata["ase_latent"] = recorded_latent
+            zmeta["episode_ends"] = episode_ends
+            print(zroot.tree())
+            
 
         print(sum_rewards)
         if print_game_res:

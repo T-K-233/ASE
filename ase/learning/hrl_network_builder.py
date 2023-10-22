@@ -31,7 +31,7 @@ from rl_games.algos_torch import network_builder
 import torch
 import torch.nn as nn
 
-from learning import ase_network_builder
+from ase.learning import ase_network_builder
 
 class HRLBuilder(network_builder.A2CBuilder):
     def __init__(self, **kwargs):

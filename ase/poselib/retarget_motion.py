@@ -31,9 +31,9 @@ import torch
 import json
 import numpy as np
 
-from poselib.core.rotation3d import *
-from poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState, SkeletonMotion
-from poselib.visualization.common import plot_skeleton_state, plot_skeleton_motion_interactive
+from ase.poselib.core.rotation3d import *
+from ase.poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState, SkeletonMotion
+from ase.poselib.visualization.common import plot_skeleton_state, plot_skeleton_motion_interactive
 
 """
 This scripts shows how to retarget a motion clip from the source skeleton to a target skeleton.

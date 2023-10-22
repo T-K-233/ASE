@@ -28,8 +28,8 @@
 
 import os
 
-from utils.config import set_np_formatting, set_seed, get_args, parse_sim_params, load_cfg
-from utils.parse_task import parse_task
+from ase.utils.config import set_np_formatting, set_seed, get_args, parse_sim_params, load_cfg
+from ase.utils.parse_task import parse_task
 
 from rl_games.algos_torch import players
 from rl_games.algos_torch import torch_ext
@@ -41,24 +41,54 @@ import numpy as np
 import copy
 import torch
 
-from learning import amp_agent
-from learning import amp_players
-from learning import amp_models
-from learning import amp_network_builder
+from ase.learning import amp_agent
+from ase.learning import amp_players
+from ase.learning import amp_models
+from ase.learning import amp_network_builder
 
-from learning import ase_agent
-from learning import ase_players
-from learning import ase_models
-from learning import ase_network_builder
+from ase.learning import ase_agent
+from ase.learning import ase_players
+from ase.learning import ase_models
+from ase.learning import ase_network_builder
 
-from learning import hrl_agent
-from learning import hrl_players
-from learning import hrl_models
-from learning import hrl_network_builder
+from ase.learning import hrl_agent
+from ase.learning import hrl_players
+from ase.learning import hrl_models
+from ase.learning import hrl_network_builder
 
 args = None
 cfg = None
 cfg_train = None
+
+def create_rlgpu_env_cfg(args, cfg, cfg_train):
+    use_horovod = cfg_train['params']['config'].get('multi_gpu', False)
+    if use_horovod:
+        import horovod.torch as hvd
+
+        rank = hvd.rank()
+        print("Horovod rank: ", rank)
+
+        cfg_train['params']['seed'] = cfg_train['params']['seed'] + rank
+
+        args.device = 'cuda'
+        args.device_id = rank
+        args.rl_device = 'cuda:' + str(rank)
+
+        cfg['rank'] = rank
+        cfg['rl_device'] = 'cuda:' + str(rank)
+
+    sim_params = parse_sim_params(args, cfg, cfg_train)
+    task, env = parse_task(args, cfg, cfg_train, sim_params)
+
+    print('num_envs: {:d}'.format(env.num_envs))
+    print('num_actions: {:d}'.format(env.num_actions))
+    print('num_obs: {:d}'.format(env.num_obs))
+    print('num_states: {:d}'.format(env.num_states))
+    
+    frames = 2
+    if frames > 1:
+        env = wrappers.FrameStack(env, frames, False)
+    return env
 
 def create_rlgpu_env(**kwargs):
     use_horovod = cfg_train['params']['config'].get('multi_gpu', False)
@@ -226,7 +256,16 @@ def main():
     vargs = vars(args)
 
     algo_observer = RLGPUAlgoObserver()
-
+    
+    # torch.save((args, cfg, cfg_train), 'nominal_cfg.pt')
+    # env = create_rlgpu_env(args, cfg, cfg_train)
+    
+    # while True:
+    #     obs, r, d, _ = env.step(torch.zeros((env.num_envs, env.num_actions), dtype=torch.float32, device='cuda:0'))
+    #     env_ids = torch.nonzero(d, as_tuple=False).squeeze(1).int()
+    #     obs = env.reset(env_ids)
+    #     import time
+    #     time.sleep(0.01)
     runner = build_alg_runner(algo_observer)
     runner.load(cfg_train)
     runner.reset()

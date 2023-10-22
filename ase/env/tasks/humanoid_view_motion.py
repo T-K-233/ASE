@@ -30,7 +30,7 @@ import torch
 
 from isaacgym import gymtorch
 
-from env.tasks.humanoid_amp import HumanoidAMP
+from ase.env.tasks.humanoid_amp import HumanoidAMP
 
 
 class HumanoidViewMotion(HumanoidAMP):
