@@ -32,6 +32,7 @@ class BaseTask():
             self.device = "cuda" + ":" + str(self.device_id)
 
         self.headless = cfg["headless"]
+        self.headless = True
 
         # double check!
         self.graphics_device_id = self.device_id

@@ -50,7 +50,7 @@ class ASEPlayer(amp_players.AMPPlayerContinuous):
             batch_size = self.env_info['num_envs']
         self._ase_latents = torch.zeros((batch_size, self._latent_dim), dtype=torch.float32,
                                          device=self.device)
-
+        self._reset_latents()
         return
 
     def run(self):
@@ -59,7 +59,7 @@ class ASEPlayer(amp_players.AMPPlayerContinuous):
         return
 
     def get_action(self, obs_dict, is_determenistic=False):
-        self._update_latents()
+        # self._update_latents()
 
         obs = obs_dict['obs']
         if len(obs.size()) == len(self.obs_shape):
