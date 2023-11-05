@@ -53,6 +53,8 @@ class HumanoidAMP(Humanoid):
         self._hybrid_init_prob = cfg["env"]["hybridInitProb"]
         self._num_amp_obs_steps = cfg["env"]["numAMPObsSteps"]
         assert(self._num_amp_obs_steps >= 2)
+        
+        self.hacky_var = cfg["env"].get("hackyVar")
 
         self._reset_default_env_ids = []
         self._reset_ref_env_ids = []
@@ -142,19 +144,23 @@ class HumanoidAMP(Humanoid):
             self._num_amp_obs_per_step = 13 + self._dof_obs_size + 28 + 3 * num_key_bodies # [root_h, root_rot, root_vel, root_ang_vel, dof_pos, dof_vel, key_body_pos]
         elif (asset_file == "mjcf/amp_humanoid_sword_shield.xml"):
             self._num_amp_obs_per_step = 13 + self._dof_obs_size + 31 + 3 * num_key_bodies # [root_h, root_rot, root_vel, root_ang_vel, dof_pos, dof_vel, key_body_pos]
+        elif (asset_file == "urdf/robot.urdf"):
+            self._num_amp_obs_per_step = 13 + self._dof_obs_size + 31 + 3 * num_key_bodies # [root_h, root_rot, root_vel, root_ang_vel, dof_pos, dof_vel, key_body_pos]
         else:
             print("Unsupported character config file: {s}".format(asset_file))
             assert(False)
+        # breakpoint()
 
         return
 
     def _load_motion(self, motion_file):
-        assert(self._dof_offsets[-1] == self.num_dof)
+        assert(self._dof_offsets[-1] == self.num_dof), (self._dof_offsets[-1], self.num_dof)
         self._motion_lib = MotionLib(motion_file=motion_file,
                                      dof_body_ids=self._dof_body_ids,
                                      dof_offsets=self._dof_offsets,
                                      key_body_ids=self._key_body_ids.cpu().numpy(), 
-                                     device=self.device)
+                                     device=self.device,
+                                     hacky_var=self.hacky_var)
         return
     
     def _reset_envs(self, env_ids):

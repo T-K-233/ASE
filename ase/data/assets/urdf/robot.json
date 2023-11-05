@@ -1,0 +1,2180 @@
+{
+  "robot": {
+    "name": "humanoid_v2",
+    "link": [
+      {
+        "name": "base",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.000000 0.256000",
+            "rpy": "-0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "box": {
+                "size": "0.14999999999999999445 0.14000000000000001332 0.4000000000000000222"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/base_visual.stl"
+            }
+          },
+          "material": {
+            "name": "base_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000006 -0.001482 0.241970",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "2.870447"
+          },
+          "inertia": {
+            "ixx": "0.088267",
+            "ixy": "0.000004",
+            "ixz": "0.000000",
+            "iyy": "0.095433",
+            "iyz": "-0.000359",
+            "izz": "0.017842"
+          }
+        }
+      },
+      {
+        "name": "upperarm_x_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_x_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_x_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.001501 0.000000 -0.041186",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.176612"
+          },
+          "inertia": {
+            "ixx": "0.000189",
+            "ixy": "0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000171",
+            "iyz": "0.000000",
+            "izz": "0.000120"
+          }
+        }
+      },
+      {
+        "name": "upperarm_y_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_y_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_y_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.063934 0.027337",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.239234"
+          },
+          "inertia": {
+            "ixx": "0.000502",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000270",
+            "iyz": "0.000034",
+            "izz": "0.000404"
+          }
+        }
+      },
+      {
+        "name": "upperarm_z_l",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.000000 0.020000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.2000000000000000111",
+                "radius": "0.040000000000000000833"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_z_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_z_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000001 0.000000 -0.005028",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.627801"
+          },
+          "inertia": {
+            "ixx": "0.014361",
+            "ixy": "-0.000000",
+            "ixz": "-0.000119",
+            "iyy": "0.014360",
+            "iyz": "0.000000",
+            "izz": "0.009948"
+          }
+        }
+      },
+      {
+        "name": "lowerarm_x_l",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.116950 0.029000",
+            "rpy": "-1.570796 1.570796 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.22000000000000000111",
+                "radius": "0.02999999999999999889"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerarm_x_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerarm_x_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000379 -0.177597 -0.036842",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "5.945373"
+          },
+          "inertia": {
+            "ixx": "0.093341",
+            "ixy": "-0.000119",
+            "ixz": "0.000153",
+            "iyy": "0.087697",
+            "iyz": "-0.000408",
+            "izz": "0.174787"
+          }
+        }
+      },
+      {
+        "name": "upperarm_x_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_x_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_x_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.001501 0.000000 -0.041186",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.176612"
+          },
+          "inertia": {
+            "ixx": "0.000189",
+            "ixy": "0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000171",
+            "iyz": "0.000000",
+            "izz": "0.000120"
+          }
+        }
+      },
+      {
+        "name": "upperarm_y_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_y_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_y_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.063934 0.027337",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.239234"
+          },
+          "inertia": {
+            "ixx": "0.000502",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000270",
+            "iyz": "0.000034",
+            "izz": "0.000404"
+          }
+        }
+      },
+      {
+        "name": "upperarm_z_r",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.000000 0.020000",
+            "rpy": "-0.000000 -0.000000 -0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.2000000000000000111",
+                "radius": "0.040000000000000000833"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperarm_z_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperarm_z_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000001 0.000000 -0.005028",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.627801"
+          },
+          "inertia": {
+            "ixx": "0.014361",
+            "ixy": "0.000000",
+            "ixz": "0.000119",
+            "iyy": "0.014360",
+            "iyz": "0.000000",
+            "izz": "0.009948"
+          }
+        }
+      },
+      {
+        "name": "lowerarm_x_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerarm_x_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerarm_x_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.063934 0.027337",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.239234"
+          },
+          "inertia": {
+            "ixx": "0.000502",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000270",
+            "iyz": "0.000034",
+            "izz": "0.000404"
+          }
+        }
+      },
+      {
+        "name": "lowerarm_z_r",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 0.010000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.22000000000000000111",
+                "radius": "0.02999999999999999889"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerarm_z_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerarm_z_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 0.000035 -0.028723",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.060033"
+          },
+          "inertia": {
+            "ixx": "0.000033",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.000036",
+            "iyz": "0.000000",
+            "izz": "0.000014"
+          }
+        }
+      },
+      {
+        "name": "hand_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/hand_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "hand_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.001679 -0.009125 0.033664",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.246493"
+          },
+          "inertia": {
+            "ixx": "0.000639",
+            "ixy": "-0.000001",
+            "ixz": "0.000008",
+            "iyy": "0.000591",
+            "iyz": "-0.000075",
+            "izz": "0.000134"
+          }
+        }
+      },
+      {
+        "name": "sword",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/sword_visual.stl"
+            }
+          },
+          "material": {
+            "name": "sword_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.347455",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "1.362360"
+          },
+          "inertia": {
+            "ixx": "0.097418",
+            "ixy": "0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.098643",
+            "iyz": "-0.000000",
+            "izz": "0.001358"
+          }
+        }
+      },
+      {
+        "name": "upperleg_x_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_x_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_x_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.004717 0.000000 -0.047525",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.281148"
+          },
+          "inertia": {
+            "ixx": "0.000390",
+            "ixy": "0.000000",
+            "ixz": "-0.000006",
+            "iyy": "0.000386",
+            "iyz": "-0.000000",
+            "izz": "0.000315"
+          }
+        }
+      },
+      {
+        "name": "upperleg_y_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_y_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_y_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 -0.070208 0.028683",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.370017"
+          },
+          "inertia": {
+            "ixx": "0.000848",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.000536",
+            "iyz": "0.000016",
+            "izz": "0.000714"
+          }
+        }
+      },
+      {
+        "name": "upperleg_z_l",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "0.000000 0.000000 -0.050000",
+            "rpy": "-0.000000 0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.34000000000000002442",
+                "radius": "0.05999999999999999778"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_z_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_z_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.001469 0.002159 -0.209788",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.459570"
+          },
+          "inertia": {
+            "ixx": "0.003703",
+            "ixy": "0.000005",
+            "ixz": "-0.000006",
+            "iyy": "0.003684",
+            "iyz": "-0.000013",
+            "izz": "0.000386"
+          }
+        }
+      },
+      {
+        "name": "lowerleg_x_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerleg_x_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerleg_x_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 0.064721 0.029665",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.259080"
+          },
+          "inertia": {
+            "ixx": "0.000593",
+            "ixy": "-0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.000313",
+            "iyz": "-0.000053",
+            "izz": "0.000466"
+          }
+        }
+      },
+      {
+        "name": "lowerleg_z_l",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.080000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.38000000000000000444",
+                "radius": "0.040000000000000000833"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerleg_z_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerleg_z_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.003113 0.000008 -0.195465",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.259209"
+          },
+          "inertia": {
+            "ixx": "0.002553",
+            "ixy": "0.000000",
+            "ixz": "0.000046",
+            "iyy": "0.002548",
+            "iyz": "-0.000000",
+            "izz": "0.000132"
+          }
+        }
+      },
+      {
+        "name": "foot_x_l",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/foot_x_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "foot_x_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.016393 0.033883 0.006659",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.106688"
+          },
+          "inertia": {
+            "ixx": "0.000072",
+            "ixy": "-0.000007",
+            "ixz": "-0.000024",
+            "iyy": "0.000113",
+            "iyz": "-0.000008",
+            "izz": "0.000134"
+          }
+        }
+      },
+      {
+        "name": "foot_y_l",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.070000 -0.011950",
+            "rpy": "-1.570796 0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "box": {
+                "size": "0.089999999999999996669 0.23999999999999999112 0.010000000000000000208"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/foot_y_l_visual.stl"
+            }
+          },
+          "material": {
+            "name": "foot_y_l_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.003803 -0.021918 -0.009684",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "3.557698"
+          },
+          "inertia": {
+            "ixx": "0.022149",
+            "ixy": "0.000125",
+            "ixz": "0.000758",
+            "iyy": "0.022023",
+            "iyz": "-0.001341",
+            "izz": "0.005897"
+          }
+        }
+      },
+      {
+        "name": "upperleg_x_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_x_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_x_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.004717 0.000000 -0.047525",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.281148"
+          },
+          "inertia": {
+            "ixx": "0.000390",
+            "ixy": "0.000000",
+            "ixz": "-0.000006",
+            "iyy": "0.000386",
+            "iyz": "-0.000000",
+            "izz": "0.000315"
+          }
+        }
+      },
+      {
+        "name": "upperleg_y_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_y_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_y_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 -0.070208 0.028683",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.370017"
+          },
+          "inertia": {
+            "ixx": "0.000848",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.000536",
+            "iyz": "0.000016",
+            "izz": "0.000714"
+          }
+        }
+      },
+      {
+        "name": "upperleg_z_r",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.000000 -0.050000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.34000000000000002442",
+                "radius": "0.05999999999999999778"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/upperleg_z_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "upperleg_z_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.001469 0.002159 -0.209788",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.459570"
+          },
+          "inertia": {
+            "ixx": "0.003703",
+            "ixy": "-0.000005",
+            "ixz": "0.000006",
+            "iyy": "0.003684",
+            "iyz": "-0.000013",
+            "izz": "0.000386"
+          }
+        }
+      },
+      {
+        "name": "lowerleg_x_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerleg_x_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerleg_x_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 0.064721 0.029665",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.259080"
+          },
+          "inertia": {
+            "ixx": "0.000593",
+            "ixy": "-0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.000313",
+            "iyz": "-0.000053",
+            "izz": "0.000466"
+          }
+        }
+      },
+      {
+        "name": "lowerleg_z_r",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.080000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": [
+            {
+              "cylinder": {
+                "length": "0.38000000000000000444",
+                "radius": "0.040000000000000000833"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/lowerleg_z_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "lowerleg_z_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.003113 0.000008 -0.195465",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.259209"
+          },
+          "inertia": {
+            "ixx": "0.002553",
+            "ixy": "-0.000000",
+            "ixz": "-0.000046",
+            "iyy": "0.002548",
+            "iyz": "-0.000000",
+            "izz": "0.000132"
+          }
+        }
+      },
+      {
+        "name": "foot_x_r",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/foot_x_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "foot_x_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.016393 -0.033883 0.006659",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "0.106688"
+          },
+          "inertia": {
+            "ixx": "0.000072",
+            "ixy": "0.000007",
+            "ixz": "-0.000024",
+            "iyy": "0.000113",
+            "iyz": "0.000008",
+            "izz": "0.000134"
+          }
+        }
+      },
+      {
+        "name": "foot_y_r",
+        "$t": null,
+        "collision": {
+          "origin": {
+            "xyz": "-0.000000 -0.070000 -0.011950",
+            "rpy": "-1.570796 0.000000 -0.000000"
+          },
+          "geometry": [
+            {
+              "box": {
+                "size": "0.089999999999999996669 0.23999999999999999112 0.010000000000000000208"
+              }
+            }
+          ]
+        },
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/foot_y_r_visual.stl"
+            }
+          },
+          "material": {
+            "name": "foot_y_r_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.003804 -0.021918 -0.009685",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "3.557659"
+          },
+          "inertia": {
+            "ixx": "0.022149",
+            "ixy": "-0.000125",
+            "ixz": "-0.000759",
+            "iyy": "0.022022",
+            "iyz": "-0.001341",
+            "izz": "0.005897"
+          }
+        }
+      },
+      {
+        "name": "geometry_stud_base",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/geometry_stud_base_visual.stl"
+            }
+          },
+          "material": {
+            "name": "geometry_stud_base_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.005000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.398163"
+          },
+          "inertia": {
+            "ixx": "0.011454",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.011454",
+            "iyz": "-0.000000",
+            "izz": "0.009817"
+          }
+        }
+      },
+      {
+        "name": "geometry_stud_base_2",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/geometry_stud_base_2_visual.stl"
+            }
+          },
+          "material": {
+            "name": "geometry_stud_base_2_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.005000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.398163"
+          },
+          "inertia": {
+            "ixx": "0.011454",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.011454",
+            "iyz": "-0.000000",
+            "izz": "0.009817"
+          }
+        }
+      },
+      {
+        "name": "geometry_stud_base_3",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/geometry_stud_base_3_visual.stl"
+            }
+          },
+          "material": {
+            "name": "geometry_stud_base_3_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.005000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.398163"
+          },
+          "inertia": {
+            "ixx": "0.011454",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.011454",
+            "iyz": "-0.000000",
+            "izz": "0.009817"
+          }
+        }
+      },
+      {
+        "name": "geometry_stud_base_4",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/geometry_stud_base_4_visual.stl"
+            }
+          },
+          "material": {
+            "name": "geometry_stud_base_4_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.005000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.398163"
+          },
+          "inertia": {
+            "ixx": "0.011454",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.011454",
+            "iyz": "0.000000",
+            "izz": "0.009817"
+          }
+        }
+      },
+      {
+        "name": "geometry_stud_base_5",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/geometry_stud_base_5_visual.stl"
+            }
+          },
+          "material": {
+            "name": "geometry_stud_base_5_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "0.000000 -0.000000 -0.005000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "785.398163"
+          },
+          "inertia": {
+            "ixx": "0.011454",
+            "ixy": "0.000000",
+            "ixz": "-0.000000",
+            "iyy": "0.011454",
+            "iyz": "-0.000000",
+            "izz": "0.009817"
+          }
+        }
+      },
+      {
+        "name": "head",
+        "$t": null,
+        "visual": {
+          "origin": {
+            "xyz": "0.000000 0.000000 0.000000",
+            "rpy": "0.000000 -0.000000 0.000000"
+          },
+          "geometry": {
+            "mesh": {
+              "filename": "../meshes/head_visual.stl"
+            }
+          },
+          "material": {
+            "name": "head_material",
+            "color": {
+              "rgba": "0.8 0.8 0.8 1.0"
+            }
+          }
+        },
+        "inertial": {
+          "origin": {
+            "xyz": "-0.000000 0.000000 -0.150000",
+            "rpy": "0.000000 0.000000 0.000000"
+          },
+          "mass": {
+            "value": "10.457732"
+          },
+          "inertia": {
+            "ixx": "0.086256",
+            "ixy": "-0.000000",
+            "ixz": "0.000000",
+            "iyy": "0.086256",
+            "iyz": "-0.000000",
+            "izz": "0.065675"
+          }
+        }
+      }
+    ],
+    "joint": [
+      {
+        "name": "abdomen_x",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "geometry_stud_base"
+        },
+        "origin": {
+          "xyz": "0.000000 0.000000 -0.000000",
+          "rpy": "3.141593 -0.000000 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "abdomen_y",
+        "type": "revolute",
+        "parent": {
+          "link": "geometry_stud_base"
+        },
+        "child": {
+          "link": "geometry_stud_base_2"
+        },
+        "origin": {
+          "xyz": "0.000000 0.000000 -0.010000",
+          "rpy": "-0.000000 0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "abdomen_z",
+        "type": "revolute",
+        "parent": {
+          "link": "geometry_stud_base_2"
+        },
+        "child": {
+          "link": "geometry_stud_base_3"
+        },
+        "origin": {
+          "xyz": "0.000000 -0.000000 -0.010000",
+          "rpy": "-0.000000 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "neck_x",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "geometry_stud_base_4"
+        },
+        "origin": {
+          "xyz": "-0.000000 0.000000 0.520000",
+          "rpy": "-3.141593 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "neck_y",
+        "type": "revolute",
+        "parent": {
+          "link": "geometry_stud_base_4"
+        },
+        "child": {
+          "link": "geometry_stud_base_5"
+        },
+        "origin": {
+          "xyz": "-0.000000 0.000000 -0.010000",
+          "rpy": "-0.000000 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "neck_z",
+        "type": "revolute",
+        "parent": {
+          "link": "geometry_stud_base_5"
+        },
+        "child": {
+          "link": "head"
+        },
+        "origin": {
+          "xyz": "0.000000 0.000000 -0.010000",
+          "rpy": "-0.000000 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_x_l",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "upperarm_x_l"
+        },
+        "origin": {
+          "xyz": "-0.108000 -0.000000 0.420000",
+          "rpy": "1.570796 0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.5707963267948966,
+          "upper": 1.5707963267948966
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_y_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_x_l"
+        },
+        "child": {
+          "link": "upperarm_y_l"
+        },
+        "origin": {
+          "xyz": "0.025450 0.000000 -0.052000",
+          "rpy": "-0.000000 -1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -3.141592653589793,
+          "upper": 0.3490658503988659
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_z_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_y_l"
+        },
+        "child": {
+          "link": "upperarm_z_l"
+        },
+        "origin": {
+          "xyz": "0.000000 -0.126950 0.029000",
+          "rpy": "-1.570796 0.000000 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerarm_x_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_z_l"
+        },
+        "child": {
+          "link": "lowerarm_x_l"
+        },
+        "origin": {
+          "xyz": "-0.028950 -0.000000 -0.145000",
+          "rpy": "1.570796 -0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": 0.0,
+          "upper": 1.5707963267948966
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "upperarm_x_r"
+        },
+        "origin": {
+          "xyz": "0.108000 0.000000 0.420000",
+          "rpy": "-1.570796 -0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.5707963267948966,
+          "upper": 1.5707963267948966
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_y_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_x_r"
+        },
+        "child": {
+          "link": "upperarm_y_r"
+        },
+        "origin": {
+          "xyz": "0.025450 -0.000000 -0.052000",
+          "rpy": "3.141593 1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.3490658503988659,
+          "upper": 3.141592653589793
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperarm_z_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_y_r"
+        },
+        "child": {
+          "link": "upperarm_z_r"
+        },
+        "origin": {
+          "xyz": "-0.000000 -0.126950 0.029000",
+          "rpy": "-1.570796 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerarm_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperarm_z_r"
+        },
+        "child": {
+          "link": "lowerarm_x_r"
+        },
+        "origin": {
+          "xyz": "0.028950 -0.000000 -0.145000",
+          "rpy": "1.570796 0.000000 -1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.5707963267948966,
+          "upper": 0.0
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "hand_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerarm_z_r"
+        },
+        "child": {
+          "link": "hand_r"
+        },
+        "origin": {
+          "xyz": "-0.000000 0.000000 -0.103000",
+          "rpy": "-1.570796 0.000000 -1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "hand_y_r",
+        "type": "revolute",
+        "parent": {
+          "link": "hand_r"
+        },
+        "child": {
+          "link": "sword"
+        },
+        "origin": {
+          "xyz": "-0.000000 -0.000000 0.000000",
+          "rpy": "-1.570796 0.000000 -1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000"
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "hand_z_r",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerarm_x_r"
+        },
+        "child": {
+          "link": "lowerarm_z_r"
+        },
+        "origin": {
+          "xyz": "-0.000000 -0.126950 0.029000",
+          "rpy": "-1.570796 -1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_x_l",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "upperleg_x_l"
+        },
+        "origin": {
+          "xyz": "-0.083000 -0.000000 0.000000",
+          "rpy": "1.570796 0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 1.5707963267948966
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_y_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_x_l"
+        },
+        "child": {
+          "link": "upperleg_y_l"
+        },
+        "origin": {
+          "xyz": "0.026000 -0.000000 -0.052000",
+          "rpy": "0.000000 -1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.0471975511965976,
+          "upper": 0.2617993877991494
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_z_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_y_l"
+        },
+        "child": {
+          "link": "upperleg_z_l"
+        },
+        "origin": {
+          "xyz": "-0.000000 -0.130000 0.026000",
+          "rpy": "-1.570796 0.000000 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerleg_x_l",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_z_l"
+        },
+        "child": {
+          "link": "lowerleg_x_l"
+        },
+        "origin": {
+          "xyz": "-0.032000 -0.000000 -0.270000",
+          "rpy": "-1.570796 -0.000000 -1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.7453292519943295,
+          "upper": 0.08726646259971647
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerleg_z_l",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerleg_x_l"
+        },
+        "child": {
+          "link": "lowerleg_z_l"
+        },
+        "origin": {
+          "xyz": "-0.000000 0.130950 0.032000",
+          "rpy": "1.570796 -1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "foot_x_l",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerleg_z_l"
+        },
+        "child": {
+          "link": "foot_x_l"
+        },
+        "origin": {
+          "xyz": "0.028950 0.000000 -0.269000",
+          "rpy": "-1.570796 0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "foot_y_l",
+        "type": "revolute",
+        "parent": {
+          "link": "foot_x_l"
+        },
+        "child": {
+          "link": "foot_y_l"
+        },
+        "origin": {
+          "xyz": "0.052000 0.040000 0.029000",
+          "rpy": "-3.141593 1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.2617993877991494,
+          "upper": 0.2617993877991494
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "base"
+        },
+        "child": {
+          "link": "upperleg_x_r"
+        },
+        "origin": {
+          "xyz": "0.083000 0.000000 0.000000",
+          "rpy": "-1.570796 -0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -1.5707963267948966,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_y_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_x_r"
+        },
+        "child": {
+          "link": "upperleg_y_r"
+        },
+        "origin": {
+          "xyz": "0.026000 -0.000000 -0.052000",
+          "rpy": "-3.141593 1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.2617993877991494,
+          "upper": 1.0471975511965976
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "upperleg_z_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_y_r"
+        },
+        "child": {
+          "link": "upperleg_z_r"
+        },
+        "origin": {
+          "xyz": "-0.000000 -0.128000 0.026000",
+          "rpy": "-1.570796 -0.000000 -0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerleg_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "upperleg_z_r"
+        },
+        "child": {
+          "link": "lowerleg_x_r"
+        },
+        "origin": {
+          "xyz": "0.032000 -0.000000 -0.270000",
+          "rpy": "-1.570796 0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.08726646259971647,
+          "upper": 1.7453292519943295
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "lowerleg_z_r",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerleg_x_r"
+        },
+        "child": {
+          "link": "lowerleg_z_r"
+        },
+        "origin": {
+          "xyz": "0.000000 0.130950 0.032000",
+          "rpy": "1.570796 1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "foot_x_r",
+        "type": "revolute",
+        "parent": {
+          "link": "lowerleg_z_r"
+        },
+        "child": {
+          "link": "foot_x_r"
+        },
+        "origin": {
+          "xyz": "-0.028950 0.000000 -0.269000",
+          "rpy": "1.570796 0.000000 1.570796"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.7853981633974483,
+          "upper": 0.7853981633974483
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      },
+      {
+        "name": "foot_y_r",
+        "type": "revolute",
+        "parent": {
+          "link": "foot_x_r"
+        },
+        "child": {
+          "link": "foot_y_r"
+        },
+        "origin": {
+          "xyz": "0.052000 -0.040000 0.029000",
+          "rpy": "-0.000000 -1.570796 0.000000"
+        },
+        "axis": {
+          "xyz": "0.000000 0.000000 1.000000"
+        },
+        "limit": {
+          "effort": "25.000000",
+          "velocity": "20.000000",
+          "lower": -0.2617993877991494,
+          "upper": 0.2617993877991494
+        },
+        "joint_properties": {
+          "friction": "0.000000"
+        }
+      }
+    ]
+  }
+}

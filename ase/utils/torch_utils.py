@@ -112,13 +112,13 @@ def exp_map_to_angle_axis(exp_map):
 
     return angle, axis
 
-@torch.jit.script
+# @torch.jit.script
 def exp_map_to_quat(exp_map):
     angle, axis = exp_map_to_angle_axis(exp_map)
     q = quat_from_angle_axis(angle, axis)
     return q
 
-@torch.jit.script
+# @torch.jit.script
 def slerp(q0, q1, t):
     # type: (Tensor, Tensor, Tensor) -> Tensor
     cos_half_theta = torch.sum(q0 * q1, dim=-1)

@@ -129,6 +129,7 @@ class Humanoid(BaseTask):
         
         if self.viewer != None:
             self._init_camera()
+        # breakpoint()
             
         return
 
@@ -205,16 +206,23 @@ class Humanoid(BaseTask):
         if (asset_file == "mjcf/amp_humanoid.xml"):
             self._dof_body_ids = [1, 2, 3, 4, 6, 7, 9, 10, 11, 12, 13, 14]
             self._dof_offsets = [0, 3, 6, 9, 10, 13, 14, 17, 18, 21, 24, 25, 28]
-            self._dof_obs_size = 72
+            self._dof_obs_size = 72     # = len(self._dof_body_ids) 12 * 6
             self._num_actions = 28
             self._num_obs = 1 + 15 * (3 + 6 + 3 + 3) - 3
             
         elif (asset_file == "mjcf/amp_humanoid_sword_shield.xml"):
             self._dof_body_ids = [1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15, 16]
             self._dof_offsets = [0, 3, 6, 9, 10, 13, 16, 17, 20, 21, 24, 27, 28, 31]
-            self._dof_obs_size = 78
+            self._dof_obs_size = 78     # = len(self._dof_body_ids) 13 * 6
             self._num_actions = 31
             self._num_obs = 1 + 17 * (3 + 6 + 3 + 3) - 3
+            
+        elif (asset_file == "urdf/robot.urdf"):
+            self._dof_body_ids = [1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15, 16]
+            self._dof_offsets = [0, 3, 6, 9, 10, 13, 16, 17, 20, 21, 24, 27, 28, 31]
+            self._dof_obs_size = 78        # = len(self._dof_body_ids) 24 * 6
+            self._num_actions = 31
+            self._num_obs = 1 + 32 * (3 + 6 + 3 + 3) - 3
 
         else:
             print("Unsupported character config file: {s}".format(asset_file))
@@ -262,14 +270,23 @@ class Humanoid(BaseTask):
         motor_efforts = [prop.motor_effort for prop in actuator_props]
         
         # create force sensors at the feet
-        right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "right_foot")
-        left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "left_foot")
+        if asset_file == "robot.urdf":
+            right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "foot_y_r")
+            left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "foot_y_l")
+        else:
+            right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "right_foot")
+            left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "left_foot")
         sensor_pose = gymapi.Transform()
 
+        assert (right_foot_idx != -1)
+        assert (left_foot_idx != -1)
+        
         self.gym.create_asset_force_sensor(humanoid_asset, right_foot_idx, sensor_pose)
         self.gym.create_asset_force_sensor(humanoid_asset, left_foot_idx, sensor_pose)
 
-        self.max_motor_effort = max(motor_efforts)
+        # self.max_motor_effort = max(motor_efforts)
+        # HACK: urdf does not have this attribute
+        self.max_motor_effort = 25.
         self.motor_efforts = to_torch(motor_efforts, device=self.device)
 
         self.torso_index = 0
@@ -476,8 +493,10 @@ class Humanoid(BaseTask):
         env_ptr = self.envs[0]
         actor_handle = self.humanoid_handles[0]
         body_ids = []
+        
 
         for body_name in key_body_names:
+            print("building>>>,", body_name)
             body_id = self.gym.find_actor_rigid_body_handle(env_ptr, actor_handle, body_name)
             assert(body_id != -1)
             body_ids.append(body_id)

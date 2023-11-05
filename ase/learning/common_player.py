@@ -98,6 +98,7 @@ class CommonPlayer(players.PpoPlayerContinuous):
                     action = self.get_masked_action(obs_dict, masks, is_determenistic)
                 else:
                     action = self.get_action(obs_dict, is_determenistic)
+                # breakpoint()
                 obs_dict, r, done, info =  self.env_step(self.env, action)
                 cr += r
                 steps += 1

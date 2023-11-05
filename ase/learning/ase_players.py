@@ -165,7 +165,8 @@ class ASEPlayer(amp_players.AMPPlayerContinuous):
             disc_pred = disc_pred.detach().cpu().numpy()[0, 0]
             disc_reward = disc_reward.cpu().numpy()[0, 0]
             enc_reward = enc_reward.cpu().numpy()[0, 0]
-            print("disc_pred: ", disc_pred, disc_reward, enc_reward)
+            # print("disc_pred: ", disc_pred, disc_reward, enc_reward)
+            # HACK: no printing for now
         return
 
     def _change_char_color(self, env_ids):

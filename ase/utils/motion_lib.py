@@ -88,17 +88,41 @@ class DeviceCache:
         out = getattr(self.obj, string)
         return out
 
+def quaternion_mul(q1, q2):
+    """
+    Multiply two quaternions.
+    """
+    
+    # Extract individual components
+    x1 = q1[..., 0]
+    y1 = q1[..., 1]
+    z1 = q1[..., 2]
+    w1 = q1[..., 3]
+    x2 = q2[..., 0]
+    y2 = q2[..., 1]
+    z2 = q2[..., 2]
+    w2 = q2[..., 3]
+    
+    # Compute the product
+    bx =  x1 * w2 + y1 * z2 - z1 * y2 + w1 * x2
+    by = -x1 * z2 + y1 * w2 + z1 * x2 + w1 * y2
+    bz =  x1 * y2 - y1 * x2 + z1 * w2 + w1 * z2
+    bw = -x1 * x2 - y1 * y2 - z1 * z2 + w1 * w2
+    
+    return torch.tensor([bx, by, bz, bw])
 
 class MotionLib():
     def __init__(self, motion_file, dof_body_ids, dof_offsets,
-                 key_body_ids, device):
+                 key_body_ids, device, hacky_var=False):
         self._dof_body_ids = dof_body_ids
         self._dof_offsets = dof_offsets
         self._num_dof = dof_offsets[-1]
         self._key_body_ids = torch.tensor(key_body_ids, device=device)
         self._device = device
         self._load_motions(motion_file)
-
+        
+        self._hacky_var = hacky_var
+        
         motions = self._motions
         self.gts = torch.cat([m.global_translation for m in motions], dim=0).float()
         self.grs = torch.cat([m.global_rotation for m in motions], dim=0).float()
@@ -156,20 +180,124 @@ class MotionLib():
         motion_len = self._motion_lengths[motion_ids]
         num_frames = self._motion_num_frames[motion_ids]
         dt = self._motion_dt[motion_ids]
-
+        
         frame_idx0, frame_idx1, blend = self._calc_frame_blend(motion_times, motion_len, num_frames, dt)
-
+        
         f0l = frame_idx0 + self.length_starts[motion_ids]
         f1l = frame_idx1 + self.length_starts[motion_ids]
-
+        
+        root_pos0 = torch.zeros((3)).to(self._device)
+        root_rot0 = torch.zeros((4)).to(self._device)
+        root_rot0[3] = 1.0
+        root_pos0[2] = 1.0
+        
+        
         root_pos0 = self.gts[f0l, 0]
         root_pos1 = self.gts[f1l, 0]
 
         root_rot0 = self.grs[f0l, 0]
         root_rot1 = self.grs[f1l, 0]
-
+        
+        
         local_rot0 = self.lrs[f0l]
         local_rot1 = self.lrs[f1l]
+        
+        dof_pos = self._local_rotation_to_dof(local_rot0)
+        # dof_pos[:, :] = 0
+        
+        var = (torch.sin(motion_times * 2 * np.pi) * 0.5 + 0.5).to(self._device)
+        # dof_pos[:, 12] = var
+        # # dof_pos[:, 17] = var
+        # dof_pos[:, 23] = -var
+        # dof_pos[:, 30] = var
+        
+        if self._hacky_var:
+            # perform motion mapping
+            ref_abdomen_x           = dof_pos[:, 0]
+            ref_abdomen_y           = dof_pos[:, 1]
+            ref_abdomen_z           = dof_pos[:, 2]
+            ref_neck_x              = dof_pos[:, 3]
+            ref_neck_y              = dof_pos[:, 4]
+            ref_neck_z              = dof_pos[:, 5]
+            ref_right_shoulder_x    = dof_pos[:, 6]
+            ref_right_shoulder_y    = dof_pos[:, 7]
+            ref_right_shoulder_z    = dof_pos[:, 8]
+            ref_right_elbow         = dof_pos[:, 9]
+            ref_right_hand_x        = dof_pos[:, 10]
+            ref_right_hand_y        = dof_pos[:, 11]
+            ref_right_hand_z        = dof_pos[:, 12]
+            ref_left_shoulder_x     = dof_pos[:, 13]
+            ref_left_shoulder_y     = dof_pos[:, 14]
+            ref_left_shoulder_z     = dof_pos[:, 15]
+            ref_left_elbow          = dof_pos[:, 16]
+            ref_right_hip_x         = dof_pos[:, 17]
+            ref_right_hip_y         = dof_pos[:, 18]
+            ref_right_hip_z         = dof_pos[:, 19]
+            ref_right_knee          = dof_pos[:, 20]
+            ref_right_ankle_x       = dof_pos[:, 21]
+            ref_right_ankle_y       = dof_pos[:, 22]
+            ref_right_ankle_z       = dof_pos[:, 23]
+            ref_left_hip_x          = dof_pos[:, 24]
+            ref_left_hip_y          = dof_pos[:, 25]
+            ref_left_hip_z          = dof_pos[:, 26]
+            ref_left_knee           = dof_pos[:, 27]
+            ref_left_ankle_x        = dof_pos[:, 28]
+            ref_left_ankle_y        = dof_pos[:, 29]
+            ref_left_ankle_z        = dof_pos[:, 30]
+            
+            dof_pos = torch.zeros((n, self._num_dof), dtype=torch.float, device=self._device)
+            dof_pos[:, 0] = ref_abdomen_y
+            dof_pos[:, 1] = ref_abdomen_x
+            dof_pos[:, 2] = ref_abdomen_z
+            dof_pos[:, 3] = ref_neck_y
+            dof_pos[:, 4] = ref_neck_x
+            dof_pos[:, 5] = ref_neck_z
+            dof_pos[:, 6] = -ref_left_shoulder_y
+            dof_pos[:, 7] = -ref_left_shoulder_x
+            dof_pos[:, 8] = ref_left_shoulder_z
+            dof_pos[:, 9] = -ref_left_elbow
+            dof_pos[:, 10] = ref_right_shoulder_y
+            dof_pos[:, 11] = -ref_right_shoulder_x
+            dof_pos[:, 12] = ref_right_shoulder_z
+            dof_pos[:, 13] = ref_right_elbow
+            dof_pos[:, 14] = ref_right_hand_z
+            dof_pos[:, 15] = ref_right_hand_y
+            dof_pos[:, 16] = ref_right_hand_x
+            dof_pos[:, 17] = -ref_left_hip_y + ref_abdomen_y
+            dof_pos[:, 18] = -ref_left_hip_x
+            dof_pos[:, 19] = ref_left_hip_z
+            dof_pos[:, 20] = -ref_left_knee
+            dof_pos[:, 21] = ref_left_ankle_z
+            dof_pos[:, 22] = ref_left_ankle_y
+            dof_pos[:, 23] = -ref_left_ankle_x
+            dof_pos[:, 24] = ref_right_hip_y - ref_abdomen_y
+            dof_pos[:, 25] = -ref_right_hip_x
+            dof_pos[:, 26] = ref_right_hip_z
+            dof_pos[:, 27] = ref_right_knee
+            dof_pos[:, 28] = ref_right_ankle_z
+            dof_pos[:, 29] = -ref_right_ankle_y
+            dof_pos[:, 30] = -ref_right_ankle_x
+            
+            abdomen_adj = torch.tensor([math.sin(-ref_abdomen_y / 2), 0, 0, math.cos(ref_abdomen_y / 2)])
+            
+            # Quaternion for -90 degree rotation around Z-axis (Y-forward to X-forward)
+            z_90_rot = torch.tensor([0.0, 0.0, 0.7071068, -0.7071068])
+        
+            # Rotate the quaternion
+            root_rot0 = quaternion_mul(z_90_rot, root_rot0).to(self._device)
+            root_rot0 = quaternion_mul(root_rot0, abdomen_adj).to(self._device)
+
+        print(motion_times, var)
+
+        return (
+            root_pos0,
+            root_rot0,
+            dof_pos, 
+            torch.zeros((3)).to(self._device),# root_vel
+            torch.zeros((3)).to(self._device),# root_ang_vel
+            torch.zeros((31)).to(self._device),# dof_vel, 
+            torch.zeros((3 * 4)).to(self._device), #key_pos0
+            )
 
         root_vel = self.grvs[f0l]
 
@@ -180,6 +308,8 @@ class MotionLib():
 
         dof_vel = self.dvs[f0l]
 
+        # return root_pos0, root_rot0, self._local_rotation_to_dof(local_rot0), root_vel, root_ang_vel, dof_vel, key_pos0
+
         vals = [root_pos0, root_pos1, local_rot0, local_rot1, root_vel, root_ang_vel, key_pos0, key_pos1]
         for v in vals:
             assert v.dtype != torch.float64
@@ -188,13 +318,15 @@ class MotionLib():
         blend = blend.unsqueeze(-1)
 
         root_pos = (1.0 - blend) * root_pos0 + blend * root_pos1
-
-        root_rot = torch_utils.slerp(root_rot0, root_rot1, blend)
+        # breakpoint()
+        # root_rot = torch_utils.slerp(root_rot0, root_rot1, blend)
+        root_rot = root_rot0
 
         blend_exp = blend.unsqueeze(-1)
         key_pos = (1.0 - blend_exp) * key_pos0 + blend_exp * key_pos1
         
-        local_rot = torch_utils.slerp(local_rot0, local_rot1, torch.unsqueeze(blend, axis=-1))
+        # local_rot = torch_utils.slerp(local_rot0, local_rot1, torch.unsqueeze(blend, axis=-1))
+        local_rot = local_rot0
         dof_pos = self._local_rotation_to_dof(local_rot)
 
         return root_pos, root_rot, dof_pos, root_vel, root_ang_vel, dof_vel, key_pos
@@ -327,6 +459,8 @@ class MotionLib():
 
         n = local_rot.shape[0]
         dof_pos = torch.zeros((n, self._num_dof), dtype=torch.float, device=self._device)
+        
+        # return dof_pos
 
         for j in range(len(body_ids)):
             body_id = body_ids[j]
