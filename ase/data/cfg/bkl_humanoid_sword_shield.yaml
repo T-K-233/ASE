@@ -15,7 +15,7 @@ env:
 
   localRootObs: False
   # keyBodies: ["right_hand", "left_hand", "right_foot", "left_foot", "sword", "shield"]
-  keyBodies: ["lowerarm_x_r", "lowerarm_x_l", "foot_y_r", "foot_y_l"]
+  keyBodies: ["lowerarm_x_r", "lowerarm_x_l", "foot_y_r", "foot_y_l", "sword", "lowerarm_x_l"]
   contactBodies: ["foot_y_r", "foot_y_l"]
   terminationHeight: 0.15
   enableEarlyTermination: True

@@ -130,7 +130,7 @@ class Humanoid(BaseTask):
         if self.viewer != None:
             self._init_camera()
         # breakpoint()
-            
+        
         return
 
     def get_obs_size(self):

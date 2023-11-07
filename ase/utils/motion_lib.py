@@ -202,15 +202,33 @@ class MotionLib():
         local_rot0 = self.lrs[f0l]
         local_rot1 = self.lrs[f1l]
         
-        dof_pos = self._local_rotation_to_dof(local_rot0)
-        # dof_pos[:, :] = 0
+        root_vel = self.grvs[f0l]
+        root_ang_vel = self.gravs[f0l]
         
-        var = (torch.sin(motion_times * 2 * np.pi) * 0.5 + 0.5).to(self._device)
-        # dof_pos[:, 12] = var
-        # # dof_pos[:, 17] = var
-        # dof_pos[:, 23] = -var
-        # dof_pos[:, 30] = var
+        # key_pos0 = self.gts[f0l.unsqueeze(-1), self._key_body_ids.unsqueeze(0)]
+        # key_pos1 = self.gts[f1l.unsqueeze(-1), self._key_body_ids.unsqueeze(0)]
+
+        dof_vel = self.dvs[f0l]        
+
+        # return root_pos0, root_rot0, self._local_rotation_to_dof(local_rot0), root_vel, root_ang_vel, dof_vel, key_pos0
+
+        # vals = [root_pos0, root_pos1, local_rot0, local_rot1, root_vel, root_ang_vel, key_pos0, key_pos1]
+        # for v in vals:
+        #     assert v.dtype != torch.float64
+
+
+        blend = blend.unsqueeze(-1)
+
+        root_pos = (1.0 - blend) * root_pos0 + blend * root_pos1
+        root_rot = torch_utils.slerp(root_rot0, root_rot1, blend)
+
+        blend_exp = blend.unsqueeze(-1)
+        # key_pos = (1.0 - blend_exp) * key_pos0 + blend_exp * key_pos1
         
+        local_rot = torch_utils.slerp(local_rot0, local_rot1, torch.unsqueeze(blend, axis=-1))
+        dof_pos = self._local_rotation_to_dof(local_rot)
+
+
         if self._hacky_var:
             # perform motion mapping
             ref_abdomen_x           = dof_pos[:, 0]
@@ -284,50 +302,18 @@ class MotionLib():
             z_90_rot = torch.tensor([0.0, 0.0, 0.7071068, -0.7071068])
         
             # Rotate the quaternion
-            root_rot0 = quaternion_mul(z_90_rot, root_rot0).to(self._device)
-            root_rot0 = quaternion_mul(root_rot0, abdomen_adj).to(self._device)
-
-        print(motion_times, var)
+            root_rot = quaternion_mul(z_90_rot, root_rot).to(self._device)
+            root_rot = quaternion_mul(root_rot, abdomen_adj).to(self._device)
 
         return (
-            root_pos0,
-            root_rot0,
+            root_pos,
+            root_rot,
             dof_pos, 
-            torch.zeros((3)).to(self._device),# root_vel
-            torch.zeros((3)).to(self._device),# root_ang_vel
-            torch.zeros((31)).to(self._device),# dof_vel, 
+            root_vel,
+            root_ang_vel,
+            dof_vel, 
             torch.zeros((3 * 4)).to(self._device), #key_pos0
             )
-
-        root_vel = self.grvs[f0l]
-
-        root_ang_vel = self.gravs[f0l]
-        
-        key_pos0 = self.gts[f0l.unsqueeze(-1), self._key_body_ids.unsqueeze(0)]
-        key_pos1 = self.gts[f1l.unsqueeze(-1), self._key_body_ids.unsqueeze(0)]
-
-        dof_vel = self.dvs[f0l]
-
-        # return root_pos0, root_rot0, self._local_rotation_to_dof(local_rot0), root_vel, root_ang_vel, dof_vel, key_pos0
-
-        vals = [root_pos0, root_pos1, local_rot0, local_rot1, root_vel, root_ang_vel, key_pos0, key_pos1]
-        for v in vals:
-            assert v.dtype != torch.float64
-
-
-        blend = blend.unsqueeze(-1)
-
-        root_pos = (1.0 - blend) * root_pos0 + blend * root_pos1
-        # breakpoint()
-        # root_rot = torch_utils.slerp(root_rot0, root_rot1, blend)
-        root_rot = root_rot0
-
-        blend_exp = blend.unsqueeze(-1)
-        key_pos = (1.0 - blend_exp) * key_pos0 + blend_exp * key_pos1
-        
-        # local_rot = torch_utils.slerp(local_rot0, local_rot1, torch.unsqueeze(blend, axis=-1))
-        local_rot = local_rot0
-        dof_pos = self._local_rotation_to_dof(local_rot)
 
         return root_pos, root_rot, dof_pos, root_vel, root_ang_vel, dof_vel, key_pos
     
