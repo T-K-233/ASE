@@ -215,6 +215,20 @@ class Humanoid(BaseTask):
             self._dof_obs_size = 78
             self._num_actions = 31
             self._num_obs = 1 + 17 * (3 + 6 + 3 + 3) - 3
+            
+        elif (asset_file == "mjcf/bkl_humanoid_sword_shield.xml"):
+            self._dof_body_ids = [1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15, 16]
+            self._dof_offsets = [0, 3, 6, 9, 10, 13, 16, 17, 20, 21, 24, 27, 28, 31]
+            self._dof_obs_size = 78
+            self._num_actions = 31
+            self._num_obs = 1 + 17 * (3 + 6 + 3 + 3) - 3
+            
+        elif (asset_file == "mjcf/bkl_humanoid_sword_shield_min.xml"):
+            self._dof_body_ids = [1, 2, 3, 4, 5, 7, 8, 11, 12, 13, 14, 15, 16]
+            self._dof_offsets = [0, 3, 6, 9, 10, 13, 16, 17, 20, 21, 24, 27, 28, 31]
+            self._dof_obs_size = 78
+            self._num_actions = 31
+            self._num_obs = 1 + 17 * (3 + 6 + 3 + 3) - 3
 
         else:
             print("Unsupported character config file: {s}".format(asset_file))
@@ -262,8 +276,15 @@ class Humanoid(BaseTask):
         motor_efforts = [prop.motor_effort for prop in actuator_props]
         
         # create force sensors at the feet
-        right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "right_foot")
-        left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "left_foot")
+        asset_file = self.cfg["env"]["asset"]["assetFileName"]
+
+        if (asset_file == "mjcf/amp_humanoid.xml") or (asset_file == "mjcf/amp_humanoid_sword_shield.xml"):
+            right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "right_foot")
+            left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "left_foot")
+            
+        elif (asset_file == "mjcf/bkl_humanoid_sword_shield.xml") or (asset_file == "mjcf/bkl_humanoid_sword_shield_min.xml"):
+            right_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "foot_r")
+            left_foot_idx = self.gym.find_asset_rigid_body_index(humanoid_asset, "foot_l")
         sensor_pose = gymapi.Transform()
 
         self.gym.create_asset_force_sensor(humanoid_asset, right_foot_idx, sensor_pose)

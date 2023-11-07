@@ -27,15 +27,37 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+import torch
+
+from poselib.core.rotation3d import *
 from poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState
 from poselib.visualization.common import plot_skeleton_state
 
-# load in XML mjcf file and save zero rotation pose in npy format
-# xml_path = "../../../../assets/mjcf/nv_humanoid.xml"
+"""
+This scripts imports a MJCF XML file and converts the skeleton into a SkeletonTree format.
+It then generates a zero rotation pose, and adjusts the pose into a T-Pose.
+"""
+
+# import MJCF file
 xml_path = "../data/assets/mjcf/bkl_humanoid_sword_shield.xml"
 skeleton = SkeletonTree.from_mjcf(xml_path)
-zero_pose = SkeletonState.zero_pose(skeleton)
-zero_pose.to_file("data/bkl_humanoid.npy")
 
-# visualize zero rotation pose
+# generate zero rotation pose
+zero_pose = SkeletonState.zero_pose(skeleton)
+
+# adjust pose into a T Pose
+local_rotation = zero_pose.local_rotation
+local_rotation[skeleton.index("upperarm_l")] = quat_mul(
+    quat_from_angle_axis(angle=torch.tensor([90.0]), axis=torch.tensor([1.0, 0.0, 0.0]), degree=True), 
+    local_rotation[skeleton.index("upperarm_l")]
+)
+local_rotation[skeleton.index("upperarm_r")] = quat_mul(
+    quat_from_angle_axis(angle=torch.tensor([-90.0]), axis=torch.tensor([1.0, 0.0, 0.0]), degree=True), 
+    local_rotation[skeleton.index("upperarm_r")]
+)
+translation = zero_pose.root_translation
+translation += torch.tensor([0, 0, 0.9])
+
+# save and visualize T-pose
+zero_pose.to_file("data/bkl_humanoid_tpose.npy")
 plot_skeleton_state(zero_pose)

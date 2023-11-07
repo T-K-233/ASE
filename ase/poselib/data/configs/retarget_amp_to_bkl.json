@@ -1,0 +1,28 @@
+{
+    "source_motion": "/home/tk/Desktop/CS285-Final-Proj/ASE/ase/data/motions/reallusion_sword_shield/RL_Avatar_Atk_2xCombo01_Motion.npy",
+    "target_motion_path": "/home/tk/Desktop/CS285-Final-Proj/ASE/ase/data/motions/reallusion_sword_shield/bkl_RL_Avatar_Atk_2xCombo01_Motion.npy",
+    "source_tpose": "data/amp_humanoid_tpose.npy",
+    "target_tpose": "data/bkl_humanoid_tpose.npy",
+    "joint_mapping": {
+         "pelvis": "base",
+         "left_thigh": "upperleg_l",
+         "left_shin": "lowerleg_l",
+         "left_foot": "foot_l",
+         "right_thigh": "upperleg_r",
+         "right_shin": "lowerleg_r",
+         "right_foot": "foot_r",
+         
+
+         "left_upper_arm": "upperarm_l",
+         "left_lower_arm": "lowerarm_l",
+         "left_hand": "hand_l",
+         "right_upper_arm": "upperarm_r",
+         "right_lower_arm": "lowerarm_r",
+         "right_hand": "hand_r"
+    },
+    "rotation": [0, 0, 0, 1],
+    "scale": 0.056444,
+	"root_height_offset": 0.05,
+	"trim_frame_beg": 75,
+	"trim_frame_end": 372
+}
