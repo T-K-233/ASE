@@ -2,7 +2,7 @@
   <statistic extent="2" center="0 0 1"/>
   <option timestep="0.00555"/>
   <default>
-    <motor ctrlrange="-1 1" ctrllimited="true" forcerange="-25 25" forcelimited="true"/>
+    <motor ctrlrange="-1 1" ctrllimited="true" forcerange="-20 20" forcelimited="true"/>
     <default class="body">
       <geom type="capsule" condim="1" friction="1.0 0.05 0.05" solimp=".9 .99 .003" solref=".015 1"/>
       <joint type="hinge" damping="0.1" stiffness="5" armature=".007" limited="true" solimplimit="0 .99 .01"/>
