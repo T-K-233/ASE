@@ -1,4 +1,3 @@
-Created a `amp_humanoid_better.xml` file with all joints set to 
 
 ```bash
 stiffness="50"
@@ -17,11 +16,26 @@ numpy.__version__
 '1.21.1'
 ```
 
+# Tasks
 
-#### Pre-Training
+Screen #2:
+
+our berkeley humanoid training
+
 ```bash
-python ase/run.py --task HumanoidAMPGetup --cfg_env ase/data/cfg/humanoid_ase_sword_shield_getup.yaml --cfg_train ase/data/cfg/train/rlg/ase_humanoid.yaml --motion_file ase/data/motions/reallusion_sword_shield/dataset_reallusion_sword_shield.yaml --headless
+CUDA_VISIBLE_DEVICES=2 python ase/run.py --task HumanoidAMPGetup --cfg_env ase/data/cfg/bkl_humanoid_ase_sword_shield_getup.yaml --cfg_train ase/data/cfg/train/rlg/ase_humanoid.yaml --motion_file ase/data/motions/reallusion_sword_shield/dataset_reallusion_sword_shield.yaml --headless
 ```
+Humanoid_23-09-57-04
+
+
+Screen #3:
+
+our berkeley humanoid training (curriculum)
+
+```bash
+CUDA_VISIBLE_DEVICES=3 python ase/run.py --task HumanoidAMPGetup --cfg_env ase/data/cfg/bkl_humanoid_ase_sword_shield_getup_curri.yaml --cfg_train ase/data/cfg/train/rlg/ase_humanoid.yaml --motion_file ase/data/motions/reallusion_sword_shield/dataset_reallusion_sword_shield.yaml --headless
+```
+Humanoid_23-10-02-28
 
 
 #### Motion Data
