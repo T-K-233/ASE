@@ -2,7 +2,7 @@
   <statistic extent="2" center="0 0 1"/>
   <option timestep="0.00555"/>
   <default>
-    <motor ctrlrange="-1 1" ctrllimited="true" forcerange="-20 20" forcelimited="true"/>
+    <motor ctrlrange="-1 1" ctrllimited="true" forcerange="-25 25" forcelimited="true"/>
     <default class="body">
       <geom type="capsule" condim="1" friction="1.0 0.05 0.05" solimp=".9 .99 .003" solref=".015 1"/>
       <joint type="hinge" damping="0.1" stiffness="5" armature=".007" limited="true" solimplimit="0 .99 .01"/>
@@ -17,12 +17,10 @@
   </default>
 
   <worldbody>
-    <body name="base" pos="0 0 0" childclass="body">
+    <body name="base" pos="0 0 1" childclass="body">
       <!-- <freejoint name="root"/> -->
       <site name="root" class="force-torque"/>
-
       <geom name="base" type="sphere" pos="0 0 0" size=".08" mass="1"/>
-      
       <site name="base" class="touch" type="sphere" pos="0 0 0.07" size="0.091"/>
       <site name="upper_waist" class="touch" type="sphere" pos="0 0 0.205" size="0.071"/>
 
@@ -30,18 +28,20 @@
         <light name="top" pos="0 0 2" mode="trackcom"/>
         <camera name="back" pos="-3 0 1" xyaxes="0 -1 0 1 0 2" mode="trackcom"/>
         <camera name="side" pos="0 -3 1" xyaxes="1 0 0 0 1 2" mode="trackcom"/>
-        <joint name="spine_x" pos="0 0 0" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-        <joint name="spine_y" pos="0 0 0" axis="0 1 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-        <joint name="spine_z" pos="0 0 0" axis="0 0 1" range="-30 30" stiffness="50" damping="10" armature=".02"/>
+        <joint name="spine_x" pos="0 0 0" axis="1 0 0" range="-10 10" stiffness="50" damping="10" armature=".02"/>
+        <joint name="spine_y" pos="0 0 0" axis="0 1 0" range="-10 10" stiffness="50" damping="10" armature=".02"/>
+        <joint name="spine_z" pos="0 0 0" axis="0 0 1" range="-10 10" stiffness="50" damping="10" armature=".02"/>
         <geom name="spine" type="capsule" pos="0 0 0.06" size=".08 .08" mass="1.87"/>
-      
         <site name="spine" class="touch" type="sphere" pos="0 0 0.12" size="0.111"/>
+        <!-- 
+          this mode limits the neck and spike dof to +-10 deg 
+          also limits the torque to +-25 Nm
+        -->
 
         <body name="head" pos="0 0 0.35">
-          <joint name="head_x" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-          <joint name="head_y" axis="0 1 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-          <joint name="head_z" axis="0 0 1" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-          
+          <joint name="head_x" axis="1 0 0" range="-10 10" stiffness="50" damping="10" armature=".02"/>
+          <joint name="head_y" axis="0 1 0" range="-10 10" stiffness="50" damping="10" armature=".02"/>
+          <joint name="head_z" axis="0 0 1" range="-10 10" stiffness="50" damping="10" armature=".02"/>
           <geom name="head" type="sphere" pos="0 0 0" size="0.1" mass="0.01"/>
           <site name="head" class="touch" pos="0 0 0.175" type="sphere" size="0.103"/>
           <camera name="egocentric" pos=".103 0 0.175" xyaxes="0 -1 0 .1 0 1" fovy="80"/>
@@ -205,6 +205,7 @@
     <torque name="upperleg_r_torque"    site="upperleg_r"/>
 
     <touch name="base_touch"            site="base"/>
+
     <touch name="spine_touch"           site="spine"/>
     <touch name="head_touch"            site="head"/>
     <touch name="upperarm_r_touch"      site="upperarm_r"/>

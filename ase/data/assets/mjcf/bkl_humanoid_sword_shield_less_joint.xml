@@ -1,4 +1,4 @@
-<mujoco model="berkeley_humanoid">
+<mujoco model="berkeley_humanoid_torque_limited">
   <statistic extent="2" center="0 0 1"/>
   <option timestep="0.00555"/>
   <default>
@@ -19,7 +19,7 @@
   <worldbody>
     <body name="base" pos="0 0 0.256000" childclass="body">
       <light name="top" pos="0 0 2" mode="trackcom"/>
-      <freejoint name="root"/>
+      <!-- <freejoint name="root"/> -->
       <site name="root" class="force-torque"/>
 
       <geom name="head" type="sphere" pos="0 0 0.55" size="0.1" mass="0.01"/>
