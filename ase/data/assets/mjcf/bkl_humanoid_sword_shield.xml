@@ -48,21 +48,21 @@
         </body>
 
         <body name="upperarm_r" pos="0.0 -0.160 0.220000">
-          <joint name="upperarm_r_x" axis="1 0 0" range="-180 45" stiffness="50" damping="10" armature=".02"/>
-          <joint name="upperarm_r_y" axis="0 1 0" range="-180 60" stiffness="50" damping="10" armature=".02"/>
-          <joint name="upperarm_r_z" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_x_r" axis="1 0 0" range="-180 45" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_y_r" axis="0 1 0" range="-180 60" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_z_r" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
           <geom name="upperarm_r" fromto="0 0 -0.05 0 0 -0.2" size=".045" mass="0.65"/>
           <site name="upperarm_r" class="touch" pos="0 0 -0.14" size="0.046 0.1" zaxis="0 0 1"/>
 
           <body name="lowerarm_r" pos="0 0 -0.272">
-            <joint name="lowerarm_r_x" axis="0 1 0" range="-160 0" stiffness="50" damping="10" armature=".02"/>
+            <joint name="lowerarm_x_r" axis="0 1 0" range="-160 0" stiffness="50" damping="10" armature=".02"/>
             <geom name="lowerarm_r" fromto="0 0 -0.05 0 0 -0.15" size="0.04" mass="0.30"/>
             <site name="lowerarm_r" class="touch" pos="0 0 -0.12" size="0.041 0.0685" zaxis="0 1 0"/>
 
             <body name="hand_r" pos="0 0 -0.258947">
-              <joint name="hand_r_x" axis="1 0 0" range="-90 90" stiffness="50" damping="10" armature=".02"/>
-              <joint name="hand_r_y" axis="0 1 0" range="-90 90" stiffness="50" damping="10" armature=".02"/>
-              <joint name="hand_r_z" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
+              <joint name="hand_x_r" axis="1 0 0" range="-90 90" stiffness="50" damping="10" armature=".02"/>
+              <joint name="hand_y_r" axis="0 1 0" range="-90 90" stiffness="50" damping="10" armature=".02"/>
+              <joint name="hand_z_r" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
               <geom name="hand_r" type="sphere" size=".04" mass="0.10"/>
               <site name="hand_r" class="touch" type="sphere" size=".041"/>
 
@@ -75,9 +75,9 @@
         </body>
 
         <body name="upperarm_l" pos="0.0 0.160 0.220000">
-          <joint name="upperarm_l_x" axis="1 0 0" range="-45 180" stiffness="50" damping="10" armature=".02"/>
-          <joint name="upperarm_l_y" axis="0 1 0" range="-180 60" stiffness="50" damping="10" armature=".02"/>
-          <joint name="upperarm_l_z" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_x_l" axis="1 0 0" range="-45 180" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_y_l" axis="0 1 0" range="-180 60" stiffness="50" damping="10" armature=".02"/>
+          <joint name="upperarm_z_l" axis="0 0 1"  range="-90 90" stiffness="50" damping="10" armature=".02"/>
           <geom name="upperarm_l" fromto="0 0 -0.05 0 0 -0.2" size="0.045" mass="0.65"/>
           <site name="upperarm_l" class="touch" pos="0 0 -0.14" size="0.046 0.1" zaxis="0 0 1"/>
 
@@ -100,23 +100,23 @@
 
       <body name="upperleg_r" pos="0 -0.135 0">
         <site name="upperleg_r" class="force-torque"/>
-        <joint name="upperleg_r_x" axis="1 0 0" range="-60 15" stiffness="50" damping="10" armature=".02"/>
-        <joint name="upperleg_r_y" axis="0 1 0" range="-140 60" stiffness="50" damping="10" armature=".02"/>
-        <joint name="upperleg_r_z" axis="0 0 1" range="-60 35" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_x_r" axis="1 0 0" range="-60 15" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_y_r" axis="0 1 0" range="-140 60" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_z_r" axis="0 0 1" range="-60 35" stiffness="50" damping="10" armature=".02"/>
         <geom name="upperleg_r" fromto="0 0 -0.1 0 0 -0.32" size="0.055" mass="1.11"/>
         <site name="upperleg_r_touch" class="touch" pos="0 0 -0.21" size="0.056 0.301" zaxis="0 0 -1"/>
 
         <body name="lowerleg_r" pos="0 0 -0.400">
-          <site name="lowerleg_r_x" class="force-torque" pos="0 0 0"/>
-          <joint name="lowerleg_r_x" pos="0 0 0" axis="0 1 0" range="0 160" stiffness="50" damping="10" armature=".02"/>
+          <site name="lowerleg_x_r" class="force-torque" pos="0 0 0"/>
+          <joint name="lowerleg_x_r" pos="0 0 0" axis="0 1 0" range="0 160" stiffness="50" damping="10" armature=".02"/>
           <geom name="lowerleg_r" fromto="0 0 -0.05 0 0 -0.35"  size=".05" mass="0.52"/>
           <site name="lowerleg_r_touch" class="touch" pos="0 0 -0.2" size="0.051 0.156" zaxis="0 0 -1"/>
 
           <body name="foot_r" pos="0 0 -0.380">
             <site name="foot_r" class="force-torque"/>
-            <joint name="foot_r_x" pos="0 0 0" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-            <joint name="foot_r_y" pos="0 0 0" axis="0 1 0" range="-55 55" stiffness="50" damping="10" armature=".02"/>
-            <joint name="foot_r_z" pos="0 0 0" axis="0 0 1" range="-40 40" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_x_r" pos="0 0 0" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_y_r" pos="0 0 0" axis="0 1 0" range="-55 55" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_z_r" pos="0 0 0" axis="0 0 1" range="-40 40" stiffness="50" damping="10" armature=".02"/>
             <geom name="foot_r" type="box" pos="0.045 0 -0.08" size="0.12 0.05 0.02" mass="2.6"/>
             <site name="foot_r_touch" class="touch" type="box" pos="0.045 0 -0.08" size="0.125 0.055 0.025"/>
           </body>
@@ -125,23 +125,23 @@
 
       <body name="upperleg_l" pos="0 0.135 0">
         <site name="upperleg_l" class="force-torque"/>
-        <joint name="upperleg_l_x" axis="1 0 0" range="-15 60" stiffness="50" damping="10" armature=".02"/>
-        <joint name="upperleg_l_y" axis="0 1 0" range="-140 60" stiffness="50" damping="10" armature=".02"/>
-        <joint name="upperleg_l_z" axis="0 0 1" range="-35 60" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_x_l" axis="1 0 0" range="-15 60" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_y_l" axis="0 1 0" range="-140 60" stiffness="50" damping="10" armature=".02"/>
+        <joint name="upperleg_z_l" axis="0 0 1" range="-35 60" stiffness="50" damping="10" armature=".02"/>
         <geom name="upperleg_l" fromto="0 0 -0.1 0 0 -0.32" size=".055" mass="1.11"/>
         <site name="upperleg_l_touch" class="touch" pos="0 0 -0.21" size="0.056 0.301" zaxis="0 0 -1"/>
 
         <body name="lowerleg_l" pos="0 0 -0.400">
-          <site name="lowerleg_l_x" class="force-torque" pos="0 0 .02"/>
-          <joint name="lowerleg_l_x" pos="0 0 0" axis="0 1 0" range="0 160" stiffness="50" damping="10" armature=".02"/>
+          <site name="lowerleg_x_l" class="force-torque" pos="0 0 .02"/>
+          <joint name="lowerleg_x_l" pos="0 0 0" axis="0 1 0" range="0 160" stiffness="50" damping="10" armature=".02"/>
           <geom name="lowerleg_l" fromto="0 0 -0.05 0 0 -0.35"  size=".05" mass="0.52"/>
           <site name="lowerleg_l_touch" class="touch" pos="0 0 -0.2" size="0.051 0.156" zaxis="0 0 -1"/>
 
           <body name="foot_l" pos="0 0 -0.380">
             <site name="foot_l" class="force-torque"/>
-            <joint name="foot_l_x" pos="0 0 0" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
-            <joint name="foot_l_y" pos="0 0 0" axis="0 1 0" range="-55 55" stiffness="50" damping="10" armature=".02"/>
-            <joint name="foot_l_z" pos="0 0 0" axis="0 0 1" range="-40 40" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_x_l" pos="0 0 0" axis="1 0 0" range="-30 30" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_y_l" pos="0 0 0" axis="0 1 0" range="-55 55" stiffness="50" damping="10" armature=".02"/>
+            <joint name="foot_z_l" pos="0 0 0" axis="0 0 1" range="-40 40" stiffness="50" damping="10" armature=".02"/>
             <geom name="foot_l" type="box" pos="0.045 0 -0.08" size="0.12 0.05 0.02" mass="2.6"/>
             <site name="foot_l_touch" class="touch" type="box" pos="0.045 0 -0.08" size="0.125 0.055 0.025"/>
           </body>
@@ -157,31 +157,31 @@
     <motor name="head_x"        gear="1" 	joint="head_x"/>
     <motor name="head_y"        gear="1" 	joint="head_y"/>
     <motor name="head_z"        gear="1" 	joint="head_z"/>
-    <motor name="upperarm_r_x" 	gear="1" 	joint="upperarm_r_x"/>
-    <motor name="upperarm_r_y" 	gear="1" 	joint="upperarm_r_y"/>
-    <motor name="upperarm_r_z" 	gear="1" 	joint="upperarm_r_z"/>
-    <motor name="lowerarm_r_x"  gear="1" 	joint="lowerarm_r_x"/>
-    <motor name="hand_r_x" 	  	gear="1" 	joint="hand_r_x"/>
-    <motor name="hand_r_y"    	gear="1" 	joint="hand_r_y"/>
-    <motor name="hand_r_z"    	gear="1" 	joint="hand_r_z"/>
-    <motor name="upperarm_l_x" 	gear="1" 	joint="upperarm_l_x"/>
-    <motor name="upperarm_l_y" 	gear="1" 	joint="upperarm_l_y"/>
-    <motor name="upperarm_l_z" 	gear="1" 	joint="upperarm_l_z"/>
+    <motor name="upperarm_x_r" 	gear="1" 	joint="upperarm_x_r"/>
+    <motor name="upperarm_y_r" 	gear="1" 	joint="upperarm_y_r"/>
+    <motor name="upperarm_z_r" 	gear="1" 	joint="upperarm_z_r"/>
+    <motor name="lowerarm_x_r"  gear="1" 	joint="lowerarm_x_r"/>
+    <motor name="hand_x_r" 	  	gear="1" 	joint="hand_x_r"/>
+    <motor name="hand_y_r"    	gear="1" 	joint="hand_y_r"/>
+    <motor name="hand_z_r"    	gear="1" 	joint="hand_z_r"/>
+    <motor name="upperarm_x_l" 	gear="1" 	joint="upperarm_x_l"/>
+    <motor name="upperarm_y_l" 	gear="1" 	joint="upperarm_y_l"/>
+    <motor name="upperarm_z_l" 	gear="1" 	joint="upperarm_z_l"/>
     <motor name="left_elbow"    gear="1" 	joint="left_elbow"/>
-    <motor name="upperleg_r_x"  gear="1" 	joint="upperleg_r_x"/>
-    <motor name="upperleg_r_z"  gear="1" 	joint="upperleg_r_z"/>
-    <motor name="upperleg_r_y"  gear="1" 	joint="upperleg_r_y"/>
-    <motor name="lowerleg_r_x"  gear="1" 	joint="lowerleg_r_x"/>
-    <motor name="foot_r_x"   	  gear="1" 	joint="foot_r_x"/>
-    <motor name="foot_r_y"   	  gear="1" 	joint="foot_r_y"/>
-    <motor name="foot_r_z"   	  gear="1" 	joint="foot_r_z"/>
-    <motor name="upperleg_l_x"  gear="1" 	joint="upperleg_l_x"/>
-    <motor name="upperleg_l_z"  gear="1" 	joint="upperleg_l_z"/>
-    <motor name="upperleg_l_y"  gear="1" 	joint="upperleg_l_y"/>
-    <motor name="lowerleg_l_x"  gear="1" 	joint="lowerleg_l_x"/>
-    <motor name="foot_l_x"    	gear="1" 	joint="foot_l_x"/>
-    <motor name="foot_l_y"    	gear="1" 	joint="foot_l_y"/>
-    <motor name="foot_l_z"    	gear="1" 	joint="foot_l_z"/>
+    <motor name="upperleg_x_r"  gear="1" 	joint="upperleg_x_r"/>
+    <motor name="upperleg_z_r"  gear="1" 	joint="upperleg_z_r"/>
+    <motor name="upperleg_y_r"  gear="1" 	joint="upperleg_y_r"/>
+    <motor name="lowerleg_x_r"  gear="1" 	joint="lowerleg_x_r"/>
+    <motor name="foot_x_r"   	  gear="1" 	joint="foot_x_r"/>
+    <motor name="foot_y_r"   	  gear="1" 	joint="foot_y_r"/>
+    <motor name="foot_z_r"   	  gear="1" 	joint="foot_z_r"/>
+    <motor name="upperleg_x_l"  gear="1" 	joint="upperleg_x_l"/>
+    <motor name="upperleg_z_l"  gear="1" 	joint="upperleg_z_l"/>
+    <motor name="upperleg_y_l"  gear="1" 	joint="upperleg_y_l"/>
+    <motor name="lowerleg_x_l"  gear="1" 	joint="lowerleg_x_l"/>
+    <motor name="foot_x_l"    	gear="1" 	joint="foot_x_l"/>
+    <motor name="foot_y_l"    	gear="1" 	joint="foot_y_l"/>
+    <motor name="foot_z_l"    	gear="1" 	joint="foot_z_l"/>
   </actuator>
 
   <sensor>
@@ -192,15 +192,15 @@
 
     <force name="foot_l_force"          site="foot_l"/>
     <force name="foot_r_force"          site="foot_r"/>
-    <force name="lowerleg_l_x_force"    site="lowerleg_l_x"/>
-    <force name="lowerleg_r_x_force"    site="lowerleg_r_x"/>
+    <force name="lowerleg_x_l_force"    site="lowerleg_x_l"/>
+    <force name="lowerleg_x_r_force"    site="lowerleg_x_r"/>
     <force name="upperleg_l_force"      site="upperleg_l"/>
     <force name="upperleg_r_force"      site="upperleg_r"/>
 
     <torque name="foot_l_torque"        site="foot_l"/>
     <torque name="foot_r_torque"        site="foot_r"/>
-    <torque name="lowerleg_l_x_torque"  site="lowerleg_l_x"/>
-    <torque name="lowerleg_r_x_torque"  site="lowerleg_r_x"/>
+    <torque name="lowerleg_x_l_torque"  site="lowerleg_x_l"/>
+    <torque name="lowerleg_x_r_torque"  site="lowerleg_x_r"/>
     <torque name="upperleg_l_torque"    site="upperleg_l"/>
     <torque name="upperleg_r_torque"    site="upperleg_r"/>
 
