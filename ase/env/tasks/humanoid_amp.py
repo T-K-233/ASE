@@ -167,7 +167,7 @@ class HumanoidAMP(Humanoid):
         return
 
     def _reset_actors(self, env_ids):
-        if (self._state_init == HumanoidAMP.StateInit.Default):
+        if (self._state_init == HumanoidAMP.StateInit.Default) or True:
             self._reset_default(env_ids)
         elif (self._state_init == HumanoidAMP.StateInit.Start
               or self._state_init == HumanoidAMP.StateInit.Random):

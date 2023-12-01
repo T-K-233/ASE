@@ -74,12 +74,12 @@ class Humanoid(BaseTask):
         # get gym GPU state tensors
         actor_root_state = self.gym.acquire_actor_root_state_tensor(self.sim)
         dof_state_tensor = self.gym.acquire_dof_state_tensor(self.sim)
-        sensor_tensor = self.gym.acquire_force_sensor_tensor(self.sim)
+        # sensor_tensor = self.gym.acquire_force_sensor_tensor(self.sim)
         rigid_body_state = self.gym.acquire_rigid_body_state_tensor(self.sim)
         contact_force_tensor = self.gym.acquire_net_contact_force_tensor(self.sim)
 
         sensors_per_env = 2
-        self.vec_sensor_tensor = gymtorch.wrap_tensor(sensor_tensor).view(self.num_envs, sensors_per_env * 6)
+        # self.vec_sensor_tensor = gymtorch.wrap_tensor(sensor_tensor).view(self.num_envs, sensors_per_env * 6)
 
         dof_force_tensor = self.gym.acquire_dof_force_tensor(self.sim)
         self.dof_force_tensor = gymtorch.wrap_tensor(dof_force_tensor).view(self.num_envs, self.num_dof)
@@ -466,8 +466,8 @@ class Humanoid(BaseTask):
         return
 
     def render(self, sync_frame_time=False):
-        if self.viewer:
-            self._update_camera()
+        # if self.viewer:
+        #     self._update_camera()
 
         super().render(sync_frame_time)
         return
@@ -506,9 +506,9 @@ class Humanoid(BaseTask):
         self.gym.refresh_actor_root_state_tensor(self.sim)
         self._cam_prev_char_pos = self._humanoid_root_states[0, 0:3].cpu().numpy()
         
-        cam_pos = gymapi.Vec3(self._cam_prev_char_pos[0], 
-                              self._cam_prev_char_pos[1] - 3.0, 
-                              1.0)
+        cam_pos = gymapi.Vec3(self._cam_prev_char_pos[0]- 5.0, 
+                              self._cam_prev_char_pos[1] - 5.0, 
+                              3.0)
         cam_target = gymapi.Vec3(self._cam_prev_char_pos[0],
                                  self._cam_prev_char_pos[1],
                                  1.0)

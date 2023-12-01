@@ -28,6 +28,9 @@
 
 import os
 
+from isaacgym import gymapi
+from isaacgym import gymtorch
+
 from ase.utils.config import set_np_formatting, set_seed, get_args, parse_sim_params, load_cfg
 from ase.utils.parse_task import parse_task
 
@@ -258,18 +261,56 @@ def main():
     algo_observer = RLGPUAlgoObserver()
     
     # torch.save((args, cfg, cfg_train), 'nominal_cfg.pt')
-    # env = create_rlgpu_env(args, cfg, cfg_train)
+    env = create_rlgpu_env()
     
-    # while True:
-    #     obs, r, d, _ = env.step(torch.zeros((env.num_envs, env.num_actions), dtype=torch.float32, device='cuda:0'))
-    #     env_ids = torch.nonzero(d, as_tuple=False).squeeze(1).int()
-    #     obs = env.reset(env_ids)
-    #     import time
-    #     time.sleep(0.01)
-    runner = build_alg_runner(algo_observer)
-    runner.load(cfg_train)
-    runner.reset()
-    runner.run(vargs)
+    # list in isaac: [3,12,16,18,17,19,21,1,4,7,2,5,8]
+    idx_isaac = [3,12,17,19,21,16,18,2,5,8,1,4,7]
+    # list of dof: [ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37]
+    idx_dof = [0, 1,  2,  3,  4,  5,  6,  7,  8,  9, 12, 13, 14, 15, 16, 17, 18,     21, 22, 23, 25, 27, 28,29, 30, 31, 32, 34, 36, 37, 38]
+    # Your theta values: a numpy array of shape (192, 24, 3)
+    thetas = np.load('thetas.npy', allow_pickle=True)  # Load your thetas
+    thetas = torch.tensor(thetas, dtype=torch.float32)
+    thetas[0,:,[16,17]] += thetas[0,:,[13,14]]
+    thetas = thetas[0,:,idx_isaac]
+    old_thetas = torch.clone(thetas)
+    thetas = torch.clone(thetas)
+    thetas[...,0] = old_thetas[...,1]
+    thetas[...,1] = old_thetas[...,0]
+    thetas[...,2] = old_thetas[...,2]
+    thetas[:,[2,5],0] *= -1
+    thetas[:,[2,5],2] *= -1
+    # print(torch.round(thetas[:,3]))
+    # thetas[:,[3,6],1] *= -1
+    thetas = thetas.view(thetas.shape[0], -1)  
+    thetas = thetas[:,idx_dof] * torch.pi / 180.0
+    # env.task.gym
+    # env.task._rigid_body_pos
+    # env.task.gym.set_rigid_body_state_tensor(env.task.sim, gymtorch.unwrap_tensor(env.task._rigid_body_state))
+
+    def set_joint_angles(theta):
+        # env.task._dof_pos[:, 6:10] = theta[6:10]
+        env.task._dof_pos[:, :] = theta[:]
+        env.task.gym.set_dof_state_tensor(env.task.sim, gymtorch.unwrap_tensor(env.task._dof_state))
+        env.task._root_states[:, :3] = torch.tensor([0,0,1]).cuda()
+        env.task._root_states[:, 3:7] = torch.tensor([0,0,0,1]).cuda()
+        env.task.gym.set_actor_root_state_tensor(env.task.sim, gymtorch.unwrap_tensor(env.task._root_states))
+        
+    idx = 0
+    while True:
+        set_joint_angles(thetas[idx])
+        obs, r, d, _ = env.step(torch.zeros((env.num_envs, env.num_actions), dtype=torch.float32, device='cuda:0'))
+
+        env_ids = torch.nonzero(d, as_tuple=False).squeeze(1).int()
+        obs = env.reset(env_ids)
+        import time
+        time.sleep(0.01)
+        idx += 1
+        if idx >= thetas.shape[0] or len(env_ids) > 0:
+            idx = 0
+    # runner = build_alg_runner(algo_observer)
+    # runner.load(cfg_train)
+    # runner.reset()
+    # runner.run(vargs)
 
     return
 

@@ -105,7 +105,7 @@ class HumanoidAMPGetup(HumanoidAMP):
 
     def _reset_actors(self, env_ids):
         num_envs = env_ids.shape[0]
-        recovery_probs = to_torch(np.array([self._recovery_episode_prob] * num_envs), device=self.device)
+        recovery_probs = to_torch(np.array([self._recovery_episode_prob] * num_envs), device=self.device) * 0
         recovery_mask = torch.bernoulli(recovery_probs) == 1.0
         terminated_mask = (self._terminate_buf[env_ids] == 1)
         recovery_mask = torch.logical_and(recovery_mask, terminated_mask)

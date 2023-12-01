@@ -1,4 +1,62 @@
 motions:
+  - file: "RL_Avatar_Atk_2xCombo01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_2xCombo02_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_2xCombo03_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_2xCombo04_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_2xCombo05_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo02_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo03_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo04_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo05_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo06_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_3xCombo07_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_4xCombo01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_4xCombo02_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_4xCombo03_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_SlashDown_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_SlashLeft_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_SlashRight_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_SlashUp_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_Spin_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Atk_Stab_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Counter_Atk01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Counter_Atk02_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Counter_Atk03_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Counter_Atk04_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Kill_2xCombo01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Kill_2xCombo02_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Kill_3xCombo01_Motion.npy"
+    weight: 0.00724638
+  - file: "RL_Avatar_Kill_3xCombo02_Motion.npy"
+    weight: 0.00724638
   - file: "RL_Avatar_Kill_4xCombo01_Motion.npy"
     weight: 0.00724638
   - file: "RL_Avatar_Atk_Jump_Motion.npy"

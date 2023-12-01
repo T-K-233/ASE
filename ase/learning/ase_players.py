@@ -34,6 +34,17 @@ from rl_games.algos_torch import players
 from ase.learning import amp_players
 from ase.learning import ase_network_builder
 
+
+
+motions = {
+    "move_left": torch.Tensor([ 0.1 ,  0.15,  0.07,  0.05, -0.25, -0.1 ,  0.06,  0.04, -0.03, -0.2 , -0.01, -0.22, -0.17, -0.05,  0.12, -0.13, -0.02, -0.09, -0.07, -0.09, -0.22,  0.06, -0.1 ,  0.21, -0.25,  0.26,  0.1 , -0.05, -0.11, -0.23, -0.06,  0.1 , -0.03,  0.06,  0.  , -0.06, -0.02,  0.04,  0.04,  0.12, -0.04, -0.19, -0.01, -0.17, -0.02,  0.26,  0.14,  0.24,  0.16,  0.08,  0.12, -0.03,  0.19,  0.03,  0.03, -0.04,  0.13,  0.01,  0.05,  0.2 , -0.02, -0.02, -0.01,  0.02]),
+    
+}
+
+
+
+
+
 class ASEPlayer(amp_players.AMPPlayerContinuous):
     def __init__(self, config):
         self._latent_dim = config['latent_dim']
@@ -101,8 +112,11 @@ class ASEPlayer(amp_players.AMPPlayerContinuous):
             num_envs = self.env.task.num_envs
             done_env_ids = to_torch(np.arange(num_envs), dtype=torch.long, device=self.device)
 
-        rand_vals = self.model.a2c_network.sample_latents(len(done_env_ids))
-        self._ase_latents[done_env_ids] = rand_vals
+        # rand_vals = self.model.a2c_network.sample_latents(len(done_env_ids))
+        # self._ase_latents[done_env_ids] = rand_vals
+        # breakpoint()
+        self._ase_latents[done_env_ids] = motions["move_left"].to(self.device)
+        print("RESET LATENTS")
         self._change_char_color(done_env_ids)
 
         return
